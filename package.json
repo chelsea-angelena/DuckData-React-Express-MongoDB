@@ -1,39 +1,40 @@
 {
-  "name": "duck_data",
-  "version": "1.0.0",
-  "description": "FreshWorks Studio challenge app",
-  "main": "server.js",
-  	"engines": {
+	"name": "duck_data",
+	"version": "1.0.0",
+	"description": "FreshWorks Studio challenge app",
+	"main": "server.js",
+	"engines": {
 		"node": "14.x",
 		"npm": "6.x"
 	},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chelsea-angelena/freshWorks.git"
-  },
-  "author": "Chelsea Angelena Brown",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chelsea-angelena/freshWorks/issues"
-  },
-  "homepage": ".",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-validator": "^6.9.2",
-    "geohash": "0.0.1",
-    "mongoose": "^5.11.13",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.7"
-  }
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js",
+		"heroku-postbuild": "cd client && npm install && npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chelsea-angelena/freshWorks.git"
+	},
+	"author": "Chelsea Angelena Brown",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/chelsea-angelena/freshWorks/issues"
+	},
+	"homepage": ".",
+	"dependencies": {
+		"axios": "^0.21.1",
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"express-validator": "^6.9.2",
+		"geohash": "0.0.1",
+		"mongoose": "^5.11.13",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {
+		"dotenv": "^8.2.0",
+		"morgan": "^1.10.0",
+		"nodemon": "^2.0.7"
+	}
 }
