@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const path = require('path');
+// const path = require('path');
 const logger = require('morgan');
 
 app.use(express.json());
@@ -19,6 +19,10 @@ app.use(cors());
 // });
 // require('./routes/duckRoute')(app);
 require('./config/db')();
+
+app.get('/', (req, res) => {
+  res.send("Hello from duck data")
+})
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
