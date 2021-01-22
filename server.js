@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 // const path = require('path');
-const logger = require('morgan');
+// const logger = require('morgan');
 
 app.use(express.json());
-app.use(logger('combined'));
+// app.use(logger('combined'));
 app.use(cors());
 
 // app.use(express.static(path.join(__dirname, 'client/public')));
