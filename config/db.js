@@ -1,5 +1,7 @@
 const { connect, connection } = require('mongoose');
-// require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') {
+	require('dotenv').config();
+}
 
 module.exports = () => {
 	const MONGO_DB_PASS = process.env.MONGO_DB_PASS;

@@ -2,21 +2,29 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const path = require('path');
-// const logger = require('morgan');
 
-app.use(express.json());
-// app.use(logger('combined'));
-app.use(cors());
+if (process.env.NODE_ENV !== 'production'){
+const logger = require('morgan');
+app.use(logger('combined'));
+app.use(express.static(path.join(__dirname, 'client/public')));
 
-// app.use(express.static(path.join(__dirname, 'client/public')));
-
-// app.get('*', (req, res) => {
-// 	res.sendFile(path.join(__dirname + '/client/public/index.html'));
-// });
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname + '/client/public/index.html'));
+});
+} else {
+  app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
+}
+
+
+app.use(express.json());
+
+app.use(cors());
+
+
+
 // require('./routes/duckRoute')(app);
 require('./config/db')();
 
