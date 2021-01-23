@@ -19,3 +19,14 @@
   @mixin desktop-break {
     @media (min-width: 1024px) { @content; }
   }
+
+  @mixin titleFont{
+    font-family: $font-main;
+    padding-top: 1.5rem;
+    font-size: 2rem;
+  }
+  @mixin label-font{
+    font-family: $font-main;
+    font-weight: bold;
+    font-size: 1rem
+}

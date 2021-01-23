@@ -13,18 +13,18 @@ let info = {
 	outroTwo: 'Thanks for using Duck Data!',
 };
 
-export default function Main() {
+export default function MainPage() {
 	const { title, description, units, descriptionTwo, outro, outroTwo } = info;
 
 	return (
 		<Layout>
-			<h1>{title}</h1>
-			<div className='main__info'>
-				<p>{description}</p>
-				<p>{units}</p>
-				<p>{descriptionTwo}</p>
-				<p>{outro}</p>
-				<p>{outroTwo}</p>
+			<h1 className='intro__title'>{title}</h1>
+			<div className='intro__info'>
+				<p className='intro__item'>{description}</p>
+				<p className='intro__item'>{units}</p>
+				<p className='intro__item'>{descriptionTwo}</p>
+				<p className='intro__item'>{outro}</p>
+				<p className='intro__item'>{outroTwo}</p>
 			</div>
 		</Layout>
 	);

@@ -1,3 +1,9 @@
-.main__info{
+.intro__info{
 max-width: 300px;
+}
+.intro__title{
+  @include titleFont;
+}
+.intro__item{
+  padding-top: 12px;
 }
