@@ -3,7 +3,6 @@
  max-width: 100%;
  margin: 0 auto;
   @include center($flex-direction: column);
-
-  padding: 0px 24px 0px 24px;
+  padding: 24px;
   text-align: center;
 }

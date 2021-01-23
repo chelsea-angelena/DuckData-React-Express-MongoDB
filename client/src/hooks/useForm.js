@@ -1,17 +1,25 @@
 import { useState } from 'react';
 import axios from 'axios';
 import useLocation from '../hooks/useLocation';
+import { useHistory } from 'react-router-dom';
 
 export default function useForm() {
 	const [data, setData] = useState({});
-	const [checked, setChecked] = useState(false);
-	const { latitude, longitude } = useLocation();
+	const { latitude, longitude, permission } = useLocation();
 	const [error, setError] = useState(null);
+	const [preview, setPreview] = useState(false);
+	const [formVis, setFormVis] = useState(true);
+	const history = useHistory();
 
-	const toggleChecked = (e) => {
-		setChecked(!checked);
+	const handleGoBack = () => {
+		history.goBack();
 	};
-
+	
+	const togglePreview = (e) => {
+		e.preventDefault();
+		setPreview(!preview);
+		setFormVis(!formVis);
+	};
 	const handleChange = (e) => {
 		e.persist();
 
@@ -30,6 +38,7 @@ export default function useForm() {
 	};
 
 	const submitForm = async (data) => {
+		console.log(data);
 		try {
 			await axios.post('/duckRoute', {
 				data,
@@ -55,11 +64,14 @@ export default function useForm() {
 		handleSubmit,
 		handleChange,
 		data,
-		checked,
-		toggleChecked,
 		latitude,
-
+		submitForm,
 		longitude,
 		error,
+		formVis,
+		togglePreview,
+		preview,
+		permission,
+		handleGoBack,
 	};
 }

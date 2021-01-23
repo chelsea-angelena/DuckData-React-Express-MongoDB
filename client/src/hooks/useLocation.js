@@ -3,18 +3,24 @@ import { useState, useEffect } from 'react';
 export default function useLocation() {
 	const [latitude, setLatitude] = useState(null);
 	const [longitude, setLongitude] = useState(null);
+	const [permission, setPermission] = useState(false);
+	
 
 	useEffect(() => {
-		navigator.geolocation.getCurrentPosition(function (position) {
-			setLatitude(position.coords.latitude);
-			setLongitude(position.coords.longitude);
-		});
-		if ('geolocation' in navigator) {
-			console.log('navigation is available');
+		let answer = window.confirm('Location Permission enabled');
+		if (answer) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				setLatitude(position.coords.latitude);
+				setLongitude(position.coords.longitude);
+			});
 		} else {
-			console.log('navigation not available');
+			setLatitude(0);
+			setLongitude(0);
+		}
+		if ('geolocation' in navigator) {
+			setPermission(true);
 		}
 	}, []);
 
-	return { latitude, longitude };
+	return { latitude, longitude, permission };
 }
