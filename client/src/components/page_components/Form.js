@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useForm from '../../hooks/useForm';
-import useLocation from '../../hooks/useLocation';
 
 export default function Form() {
 	const {
@@ -12,13 +11,6 @@ export default function Form() {
 		longitude,
 		toggleChecked,
 	} = useForm();
-
-	// const [checked, setChecked] = useState(false);
-	// console.log(latitude, longitude);
-	// const toggleChecked = (e) => {
-	// 	setChecked(!checked);
-	// };
-
 	return (
 		<div className='form'>
 			<form onSubmit={handleSubmit}>
@@ -28,7 +20,7 @@ export default function Form() {
 						placeholder='name of location'
 						onChange={handleChange}
 						name='locationName'
-						value={data.locationName}
+						// value={data.locationName}
 						className='form__input'
 						required
 						type='text'
@@ -40,7 +32,7 @@ export default function Form() {
 					<select
 						onChange={handleChange}
 						name='food'
-						value={data.food}
+						// value={data.food}
 						className='form__input'
 						placeholder='Choose Type'
 						required
@@ -63,7 +55,7 @@ export default function Form() {
 						placeholder='Enter a number amount'
 						onChange={handleChange}
 						name='qtyFoodNumber'
-						value={data.qtyFoodNumber}
+						// value={data.qtyFoodNumber}
 						className='form__input'
 						required
 						type='Number'
@@ -77,7 +69,7 @@ export default function Form() {
 					<select
 						onChange={handleChange}
 						name='qtyFoodMeasurement'
-						value={data.qtyFoodMeasurement}
+						// value={data.qtyFoodMeasurement}
 						className='form__input'
 						required
 						type='text'
@@ -98,7 +90,7 @@ export default function Form() {
 						placeholder='How many ducks?'
 						onChange={handleChange}
 						name='numOfDucks'
-						value={data.numOfDucks}
+						// value={data.numOfDucks}
 						className='form__input'
 						required
 						type='number'
@@ -110,31 +102,25 @@ export default function Form() {
 				</label>
 				<input type='checkbox' onClick={toggleChecked} />
 				<label hidden={!checked}>
+					Latitude:
 					<input
 						hidden={!checked}
 						name='latitude'
 						onChange={handleChange}
-						readonly='true'
+						readOnly={true}
 						placeholder={latitude}
-						value={latitude}
-						defaultValue={data.latitude}
 					/>
-					Latitude:
-					{latitude}
 				</label>
 
 				<label hidden={!checked}>
-					Longitude: {longitude}
+					Longitude:
 					<input
 						hidden={!checked}
 						name='longitude'
 						onChange={handleChange}
-						readonly='true'
+						readOnly={true}
 						placeholder={longitude}
-						value={data.longitude}
-						defaultValue={data.longitude}
 					/>
-					Longitude: {longitude}
 				</label>
 				<button className='form__button' type='submit'>
 					Submit

@@ -4,10 +4,9 @@ import useLocation from '../hooks/useLocation';
 
 export default function useForm() {
 	const [data, setData] = useState({});
-	// const [error, setError] = useState(null);
 	const [checked, setChecked] = useState(false);
 	const { latitude, longitude } = useLocation();
-	const [coords, setCoords] = useState({});
+	const [error, setError] = useState(null);
 
 	const toggleChecked = (e) => {
 		setChecked(!checked);
@@ -16,23 +15,30 @@ export default function useForm() {
 	const handleChange = (e) => {
 		e.persist();
 
-		console.log(e.target.value);
 		setData((data) => ({
 			...data,
 			[e.target.name]: e.target.value,
 		}));
 	};
+	const handleReset = () => {
+		Array.from(document.querySelectorAll('input')).forEach(
+			(input) => (input.value = '')
+		);
+		setData({
+			itemvalues: [{}],
+		});
+	};
 
-	const submitForm = async (data, coords) => {
-		console.log(coords);
+	const submitForm = async (data) => {
 		try {
-			let res = await axios.post('/duckRoute', {
+			await axios.post('/duckRoute', {
 				data,
 				coords: { latitude, longitude },
 			});
-			console.log(res);
 		} catch (e) {
-			console.log(e);
+			setError(e);
+		} finally {
+			handleReset();
 		}
 	};
 
@@ -52,6 +58,8 @@ export default function useForm() {
 		checked,
 		toggleChecked,
 		latitude,
+
 		longitude,
+		error,
 	};
 }

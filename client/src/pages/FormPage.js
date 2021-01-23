@@ -6,7 +6,7 @@ export default function FormPage() {
 	return (
 		<Layout>
 			<Form />
-			git
+			{/* <FormResponse /> */}
 		</Layout>
 	);
 }
