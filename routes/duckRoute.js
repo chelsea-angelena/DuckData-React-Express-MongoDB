@@ -17,16 +17,17 @@ module.exports = (app) => {
 			// 	.isEmpty(),
 			// check('numOfDucks', 'the number of ducks is required').not().isEmpty(),
 		],
-		async (req, res, next) => {
+		async (req, res) => {
 			// const errors = validationResult(req);
 			// if (!errors.isEmpty()) {
 			// 	console.log(errors);
 			// 	return res.status(400).json({ errors: errors.array() });
 			// } else {
+			console.log(req.body.coords);
 			try {
 				const {
 					body: {
-						// coords: { lat, long },
+						coords: { latitude, longitude },
 						data: {
 							data: {
 								locationName,
@@ -73,10 +74,10 @@ module.exports = (app) => {
 						converted: converted.toString(),
 						convertedUnit: 'g',
 					},
-					// coords: {
-					// 	latitude: lat,
-					// 	longitude: long,
-					// },
+					coords: {
+						latitude: latitude,
+						longitude: longitude,
+					},
 				});
 				const submitMessage = 'Thank You for your submission!';
 				await data.save();

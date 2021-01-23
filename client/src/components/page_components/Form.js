@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
 import useForm from '../../hooks/useForm';
+import useLocation from '../../hooks/useLocation';
 
 export default function Form() {
-	const { handleSubmit, handleChange, data } = useForm();
+	const {
+		handleSubmit,
+		handleChange,
+		data,
+		checked,
+		latitude,
+		longitude,
+		toggleChecked,
+	} = useForm();
 
-	const [checked, setChecked] = useState(false);
-
-	const toggleChecked = (e) => {
-		setChecked(!checked);
-	};
+	// const [checked, setChecked] = useState(false);
+	// console.log(latitude, longitude);
+	// const toggleChecked = (e) => {
+	// 	setChecked(!checked);
+	// };
 
 	return (
 		<div className='form'>
@@ -99,29 +108,34 @@ export default function Form() {
 						step='1'
 					/>
 				</label>
-				<input
-					type='checkbox'
-					name='coords'
-					value={data.coords}
-					onChange={toggleChecked}
-				/>
-				<label hidden={!checked}>Coords: </label>
-				<option
-					hidden={!checked}
-					name='latitude'
-					value={data.latitude}
-					onChange={handleChange}
-				>
-					{/* Latitude: {latitude} */}
-				</option>
-				<option
-					hidden={!checked}
-					name='longitude'
-					value={data.longitude}
-					onChange={handleChange}
-				>
-					{/* Longitude: {longitude} */}
-				</option>
+				<input type='checkbox' onClick={toggleChecked} />
+				<label hidden={!checked}>
+					<input
+						hidden={!checked}
+						name='latitude'
+						onChange={handleChange}
+						readonly='true'
+						placeholder={latitude}
+						value={latitude}
+						defaultValue={data.latitude}
+					/>
+					Latitude:
+					{latitude}
+				</label>
+
+				<label hidden={!checked}>
+					Longitude: {longitude}
+					<input
+						hidden={!checked}
+						name='longitude'
+						onChange={handleChange}
+						readonly='true'
+						placeholder={longitude}
+						value={data.longitude}
+						defaultValue={data.longitude}
+					/>
+					Longitude: {longitude}
+				</label>
 				<button className='form__button' type='submit'>
 					Submit
 				</button>
