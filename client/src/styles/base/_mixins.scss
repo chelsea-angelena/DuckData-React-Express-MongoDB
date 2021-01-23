@@ -1,0 +1,21 @@
+@mixin center($flex-direction){
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: $flex-direction;
+  flex-wrap: no-wrap;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  }
+
+  @mixin phone-break {
+    @media (min-width: 320px) { @content; }
+  }
+  @mixin tablet-break {
+    @media (min-width: 768px) { @content; }
+  }
+  @mixin desktop-break {
+    @media (min-width: 1024px) { @content; }
+  }

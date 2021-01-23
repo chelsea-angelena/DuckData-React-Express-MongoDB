@@ -2,6 +2,7 @@ import React from 'react';
 import { Main, DataPage, Form } from './pages';
 import { Switch, Route } from 'react-router-dom';
 import { Header, Footer } from './components';
+import './styles/custom.scss';
 
 function App() {
 	return (
