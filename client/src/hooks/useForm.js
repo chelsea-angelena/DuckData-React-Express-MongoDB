@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import  { useState } from 'react';
 import axios from 'axios';
 
 export default function useForm() {
 	const [data, setData] = useState({});
-	const [error, setError] = useState(null);
+	// const [error, setError] = useState(null);
 
 	const handleChange = (e) => {
 		e.persist();

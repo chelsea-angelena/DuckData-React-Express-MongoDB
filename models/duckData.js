@@ -28,13 +28,13 @@ const DuckSchema = new mongoose.Schema({
 			type: 'String',
 		},
 	},
-	coords: {
-		latitude: {
-			type: 'String',
-		},
-		longitude: {
-			type: 'String',
-		},
-	},
+	// coords: {
+	// 	latitude: {
+	// 		type: 'String',
+	// 	},
+	// 	longitude: {
+	// 		type: 'String',
+	// 	},
+	// },
 });
 module.exports = DuckData = mongoose.model('ducks', DuckSchema);

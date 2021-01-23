@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const path = require('path');
+app.use(express.json());
+app.use(cors());
 
 if (process.env.NODE_ENV !== 'production') {
 	const logger = require('morgan');
@@ -18,9 +20,6 @@ if (process.env.NODE_ENV !== 'production') {
 		res.sendFile(path.join(__dirname + '/client/build/index.html'));
 	});
 }
-
-app.use(express.json());
-app.use(cors());
 
 require('./routes/duckRoute')(app);
 require('./config/db')();
