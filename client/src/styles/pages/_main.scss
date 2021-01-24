@@ -1,11 +1,37 @@
 .intro__info{
 max-width: 300px;
 padding-bottom: 32px;
+text-align: left;
 }
 .intro__title{
   @include titleFont;
-  
 }
 .intro__item{
   padding-top: 12px;
+  text-align: left;
 }
+.info__title{
+  @include titleFont;
+}
+.info__item{
+  padding: 8px 16px;
+}
+.info__subtitle{
+  @include label-font;
+}
+ul.info__list{
+  list-style:circle;
+  text-align: left;
+  padding-left: 24px;
+}
+li.info__item{
+  text-align: left;
+  padding: 16px 0px;
+}
+.info__divider{
+  margin-top: 24px;
+  margin-bottom: 16px;
+  width: 100%;
+  border-bottom: 1px solid $dark;
+}
+

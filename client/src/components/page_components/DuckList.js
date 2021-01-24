@@ -11,6 +11,20 @@ export default function DuckList({ item }) {
 		time,
 		numOfDucks,
 	} = item;
+	let newDate = time
+		.toString()
+		.split('T')
+		.shift()
+		.split('-')
+		.reverse()
+		.join('/');
+	let newtime = time
+		.toString()
+		.split('T')
+		.pop()
+		.split(':')
+		.splice(0, 2)
+		.join(':');
 	return (
 		<div className='data'>
 			<p className='data__item'>
@@ -29,7 +43,7 @@ export default function DuckList({ item }) {
 
 			<p className='data__item'>
 				<span className='bold'>Time: </span>
-				{time}
+				{newDate} @ {newtime}
 			</p>
 			<p className='bold'>Coords:</p>
 			<p className='data__item'>
@@ -46,7 +60,10 @@ export default function DuckList({ item }) {
 				{qtyFoodNumber}-{qtyFoodMeasurement}
 			</p>
 			<p className='data__item'>
-				<span className='bold'>Ammount of Food (converted to grams): </span>
+				<span className='bold'>
+					Ammount of Food
+					<br /> (converted to grams):
+				</span>
 				{converted}-{convertedUnit}
 			</p>
 			<div className='data__divider'></div>

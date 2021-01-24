@@ -1,28 +1,27 @@
 import React from 'react';
 import useForm from '../../hooks/useForm';
-import { Layout } from '../index.js';
-import Preview from './Preview';
+import FormResponse from './FormResponse';
 
 export default function Form() {
 	const {
 		handleChange,
-		permission,
 		latitude,
 		longitude,
-		data,
-		handleGoBack,
+		getLocation,
 		handleSubmit,
-		formVis,
-		togglePreview,
-		preview,
+		response,
 	} = useForm();
 
 	return (
-		<Layout>
+		<>
 			<h3 className='data__title'>Data Form</h3>
+			<div className='checkbox'>
+				<input hidden={response} type='checkbox' onClick={getLocation} />
+				<label hidden={response}>Enable Location?</label>
+			</div>
 			<div className='data__divider'></div>
-			<div hidden={!formVis} className='form'>
-				<form hidden={!formVis} onSubmit={togglePreview}>
+			<div className='form'>
+				<form onSubmit={handleSubmit} hidden={response}>
 					<label className='form__label'>
 						Location:
 						<input
@@ -30,6 +29,7 @@ export default function Form() {
 							onChange={handleChange}
 							name='locationName'
 							// value={data.locationName}
+
 							className='form__input'
 							required
 							type='text'
@@ -49,13 +49,19 @@ export default function Form() {
 							id='food'
 						>
 							<option>Choose Type</option>
-							<option name='grains'>Grains</option>
-							<option name='veggies'>Veggies</option>
+							<option name='crackedCorn'>Cracked Corn</option>
+							<option name='frozenVeg'>Frozen peas or corn</option>
+							<option name='veggies'>
+								Veggies: chopped lettuce, green beans, other veggies{' '}
+							</option>
+							<option name='grains'>
+								Grains: barley, oats, cooked rice, wheat, millet, birdseed or
+								other grains
+							</option>
 							<option name='fruit'>Fruit</option>
 							<option name='grapes'>Grapes</option>
+							<option name='egg-shells'>Egg Shells</option>
 							<option name='duck-food'>Duck Pellets</option>
-							<option name='legumes'>Legumes</option>
-							<option name='bread'>Bread</option>
 						</select>
 					</label>
 					<label className='form__label'>
@@ -65,6 +71,7 @@ export default function Form() {
 							onChange={handleChange}
 							name='qtyFoodNumber'
 							// value={data.qtyFoodNumber}
+
 							className='form__input'
 							required
 							type='Number'
@@ -109,34 +116,20 @@ export default function Form() {
 							step='1'
 						/>
 					</label>
-					{permission && (
-						<div>
-							<p>
-								<span className='form__label'>Latitude:</span> {latitude}
-							</p>
-							<p>
-								<span className='form__label'>Longitude:</span> {longitude}
-							</p>
-						</div>
-					)}
-					<button className='form__button' onClick={togglePreview}>
-						Submit
-					</button>
-				</form>
 
-				<div>
-					<div hidden={!preview}>
-						<Preview data={data} />
-						<button className='form__button' onClick={handleSubmit}>
-							Submit
-						</button>
-
-						<button onClick={handleGoBack} className='form__button'>
-							Go Back
-						</button>
+					<div>
+						<p>
+							<span className='form__label'>Latitude:</span> {latitude}
+						</p>
+						<p>
+							<span className='form__label'>Longitude:</span> {longitude}
+						</p>
 					</div>
-				</div>
+
+					<button type='submit'>Submit</button>
+				</form>
 			</div>
-		</Layout>
+			{response && <FormResponse response={response} />}
+		</>
 	);
 }

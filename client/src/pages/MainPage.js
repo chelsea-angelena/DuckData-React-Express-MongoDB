@@ -1,29 +1,19 @@
 import React from 'react';
-import { Layout, info } from '../components';
+import { Layout, mainPageInfo } from '../components';
 import duckPic from '../assets/images/duckPic.jpg';
 export default function MainPage() {
-	const {
-		title,
-		description,
-		units,
-		descriptionTwo,
-		outro,
-		infothree,
-		outroTwo,
-	} = info;
+	const { infoOne, infoTwo, infoThree, infoFour, infoFive } = mainPageInfo;
 
 	return (
 		<>
 			<Layout>
-				<h1 className='intro__title'>{title}</h1>
-				<div className='intro__info'>
-					<p className='intro__item'>{description}</p>
-					<p className='intro__item'>{infothree}</p>
-					<p className='intro__item'>{units}</p>
-					<p className='intro__item'>{descriptionTwo}</p>
-					<p className='intro__item'>{outro}</p>
-					<p className='intro__item'>{outroTwo}</p>
-				</div>
+				<h3 className='info__title'>Welcome To Duck Data</h3>
+				<p className='info__item'>{infoOne}</p>
+				<p className='info__item'>{infoTwo}</p>
+				<p className='info__item'>{infoThree}</p>
+				<p className='info__item'>{infoFour}</p>
+				<p className='info__item'>{infoFive}</p>
+
 			</Layout>
 			<div>
 				<img

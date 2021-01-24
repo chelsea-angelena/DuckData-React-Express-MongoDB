@@ -6,3 +6,8 @@
   padding: 24px;
   text-align: center;
 }
+@media (min-width: 768px){
+  .layout{
+    padding: 64px;
+  }
+}

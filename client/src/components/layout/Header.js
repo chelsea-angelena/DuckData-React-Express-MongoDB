@@ -11,6 +11,11 @@ export default function Header(props) {
 					</Link>
 				</li>
 				<li className='nav__item'>
+					<Link to='/info' className='nav__link'>
+						Info
+					</Link>
+				</li>
+				<li className='nav__item'>
 					<Link to='/form' className='nav__link'>
 						Form
 					</Link>

@@ -1,27 +1,13 @@
 const DuckData = require('../models/duckData');
-const { validationResult } = require('express-validator');
+
 const duckData = require('../models/duckData');
 
-// check('food', 'Food is required').not().isEmpty(),
-// check('locationName', 'location name is required').not().isEmpty(),
-// check('qtyFoodNumber', 'The ammount of food is required').not().isEmpty(),
-// check('qtyFoodMeasurement', 'unit of measurement is required')
-// 	.not()
-// 	.isEmpty(),
-// check('numOfDucks', 'the number of ducks is required').not().isEmpty(),
-
 module.exports = (app) => {
-	app.post('/duckRoute', [], async (req, res) => {
-		// const errors = validationResult(req);
-		// if (!errors.isEmpty()) {
-		// 	console.log(errors);
-		// 	return res.status(400).json({ errors: errors.array() });
-		// } else {
-		console.log(req.body.coords);
+	app.post('/duckRoute', async (req, res) => {
+		console.log(req.body.data);
 		try {
 			const {
 				body: {
-					coords: { latitude, longitude },
 					data: {
 						data: {
 							locationName,
@@ -31,6 +17,7 @@ module.exports = (app) => {
 							numOfDucks,
 						},
 					},
+					coords: { latitude, longitude },
 				},
 			} = req;
 			let converted;
@@ -75,10 +62,9 @@ module.exports = (app) => {
 			});
 			const submitMessage = 'Thank You for your submission!';
 			await data.save();
-			res.json(submitMessage);
+			res.status(200).json({ submitMessage, data });
 		} catch (e) {
 			console.log(e);
-			res.status(500).json({ message: 'server error' });
 		}
 	});
 	app.get('/duckRoute', async (req, res, next) => {
@@ -93,7 +79,14 @@ module.exports = (app) => {
 	// app.put('/duckRoute', (req, res, next) => {
 	// 	res.status(200).res.json({ message: 'post has been updated' });
 	// });
-	// app.delete('/duckRoute', (req, res) => {
-	// 	res.status(200).res.json({ message: 'deleted' });
-	// });
+	app.delete('/duckRoute', async (req, res) => {
+		try {
+			await DuckData.findByIdAndRemove(req.body._id);
+			res
+				.status(200)
+				.json({ message: 'Data Deleted, please resubmit ith correct data' });
+		} catch (e) {
+			res.status(500).json('server error');
+		}
+	});
 };

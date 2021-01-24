@@ -9,17 +9,6 @@
   align-self: center;
   justify-content: center;
   }
-
-  @mixin phone-break {
-    @media (min-width: 320px) { @content; }
-  }
-  @mixin tablet-break {
-    @media (min-width: 768px) { @content; }
-  }
-  @mixin desktop-break {
-    @media (min-width: 1024px) { @content; }
-  }
-
   @mixin titleFont{
     font-family: $font-main;
     padding-top: 1rem;

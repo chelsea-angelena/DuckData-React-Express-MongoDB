@@ -5,9 +5,15 @@
   font-size: 1rem;
   &__title{
     @include titleFont;
-    
-
+    text-align: center;
   }
+}
+.data__component{
+  max-width: 300px;
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: no-wrap;
 }
 .bold{
   font-weight: bold;
@@ -18,3 +24,53 @@
   border-bottom: 1px solid $dark;
   padding-top: 32px;
 }
+.location__button{
+  max-width: 200px;
+  height: 40px;
+}
+.checkbox {
+width: 250px;
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+margin:0;
+padding:0;
+justify-content: center;
+}
+@media (min-width: 768px){
+.data{
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.data__component{
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: no-wrap;
+}
+.data__divider{
+  width: 100%;
+  border-bottom: 1px solid $dark;
+
+}
+}
+//   div.data{
+// width: 700px;
+// display: flex;
+// margin: 0;
+// padding: 0;
+// flex-direction: row;
+// align-self: center;
+// flex-wrap: wrap;
+//     &__item{
+// max-width: 200px
+//     }
+//   }
+//     .data__divider{
+//       display: none;
+//     }
+
+// }

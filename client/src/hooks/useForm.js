@@ -1,53 +1,41 @@
 import { useState } from 'react';
 import axios from 'axios';
-import useLocation from '../hooks/useLocation';
-import { useHistory } from 'react-router-dom';
 
 export default function useForm() {
 	const [data, setData] = useState({});
-	const { latitude, longitude, permission } = useLocation();
+	const [latitude, setLatitude] = useState(0);
+	const [longitude, setLongitude] = useState(0);
 	const [error, setError] = useState(null);
-	const [preview, setPreview] = useState(false);
-	const [formVis, setFormVis] = useState(true);
-	const history = useHistory();
+	const [response, setResponse] = useState(null);
 
-	const handleGoBack = () => {
-		history.goBack();
+	const getLocation = () => {
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				setLatitude(position.coords.latitude);
+				setLongitude(position.coords.longitude);
+			});
+		} else {
+			return;
+		}
 	};
-	
-	const togglePreview = (e) => {
-		e.preventDefault();
-		setPreview(!preview);
-		setFormVis(!formVis);
-	};
+
 	const handleChange = (e) => {
 		e.persist();
-
 		setData((data) => ({
 			...data,
 			[e.target.name]: e.target.value,
 		}));
 	};
-	const handleReset = () => {
-		Array.from(document.querySelectorAll('input')).forEach(
-			(input) => (input.value = '')
-		);
-		setData({
-			itemvalues: [{}],
-		});
-	};
 
 	const submitForm = async (data) => {
-		console.log(data);
 		try {
-			await axios.post('/duckRoute', {
+			let res = await axios.post('http://localhost:5000/duckRoute', {
 				data,
 				coords: { latitude, longitude },
 			});
-		} catch (e) {
-			setError(e);
-		} finally {
-			handleReset();
+			setResponse(res);
+		} catch (err) {
+			setError(err);
 		}
 	};
 
@@ -55,6 +43,7 @@ export default function useForm() {
 		if (e) {
 			e.preventDefault();
 			submitForm({ data });
+			e.target.reset();
 		} else {
 			return;
 		}
@@ -64,14 +53,11 @@ export default function useForm() {
 		handleSubmit,
 		handleChange,
 		data,
-		latitude,
 		submitForm,
+		latitude,
 		longitude,
+		getLocation,
 		error,
-		formVis,
-		togglePreview,
-		preview,
-		permission,
-		handleGoBack,
+		response,
 	};
 }
