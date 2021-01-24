@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const FormResponse = ({ response }) => {
-	console.log(response);
 	const {
 		data: {
 			submitMessage,
@@ -23,7 +22,7 @@ const FormResponse = ({ response }) => {
 	const deleteEntry = async () => {
 		console.log(_id);
 		try {
-			await axios.delete('http://localhost:5000/duckRoute', {
+			await axios.delete('/duckRoute', {
 				data: {
 					_id: { _id },
 				},
@@ -35,13 +34,13 @@ const FormResponse = ({ response }) => {
 	};
 
 	return (
-		<div className='data'>
-			<p className='data_subtitle'>{submitMessage}</p>
-			<p>
+		<div className='response'>
+			<p className='response__subtitle'>{submitMessage}</p>
+			<p className='response__par'>
 				Please Verify the information below. If anything is in correct you can
 				delete it now and re-submit
 			</p>
-
+<div>
 			<p className='data__item'>
 				<span className='bold'>Food:</span>
 				{food}
@@ -55,17 +54,6 @@ const FormResponse = ({ response }) => {
 				<span className='bold'>Ducks Fed:</span>
 				{numOfDucks}
 			</p>
-
-			<p className='bold'>Coords:</p>
-			{/* <p className='data__item'>
-				<span className='bold'>Latitude:</span>
-				{latitude}
-			</p>
-			<p className='data__item'>
-				<span className='bold'>Longitude: </span>
-				{longitude}
-			</p> */}
-
 			<p className='data__item'>
 				<span className='bold'> Ammount of Food:</span>
 				{qtyFoodNumber}-{qtyFoodMeasurement}
@@ -73,15 +61,23 @@ const FormResponse = ({ response }) => {
 			<p className='data__item'>
 				<span className='bold'>
 					Ammount of Food
-					<br /> (converted to grams):{' '}
+					<br /> (converted to grams):
 				</span>
 				{converted}-{convertedUnit}
 			</p>
 			<Link to='/data'>
-				<button onClick={goToDataPage}> Confirm</button>
+				<button className='form__button' onClick={goToDataPage}>
+					Confirm
+				</button>
 			</Link>
-			<button onClick={deleteEntry}>Delete</button>
+			<button className='form__button' onClick={deleteEntry}>
+				Delete
+			</button>
 		</div>
+    </div>
 	);
 };
 export default FormResponse;
+
+
+

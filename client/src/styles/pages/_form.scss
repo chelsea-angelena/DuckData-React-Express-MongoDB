@@ -10,7 +10,7 @@
   @include label-font;
 }
 &__input{
-  max-width: 200px;
+  width: 225px;
   height: 40px;
   margin-top: 12px;
   display: flex;
@@ -19,16 +19,44 @@
   align-self: center;
 padding-left: 24px;
 padding-right: 24px;
+border-radius: 8px;
+background-color: $lighter;
 }
 &__button{
   height: 40px;
   margin-top: 32px;
   border-radius: 8px;
   background-color: $primary;
+  width: 200px;
 }
 &__button:hover{
   background-color: $medium;
 }
+&__checkbox {
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin:0;
+  margin-top:24px;
+align-self: center;
+  justify-content: center;
+
+  }
+}
+.response{
+  max-width: 300px;
+  text-align: center;
+  &__subtitle{
+    @include label-font
+  }
+  &__par{
+    padding: 24px;
+    text-align: left;
+  }
+  &__div{
+    text-align: left;
+  }
 }
 @media (min-width: 768px) {
   .form{

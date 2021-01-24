@@ -15,11 +15,12 @@ export default function Form() {
 	return (
 		<>
 			<h3 className='data__title'>Data Form</h3>
-			<div className='checkbox'>
+
+			<div className='data__divider'></div>
+			<div className='form__checkbox'>
 				<input hidden={response} type='checkbox' onClick={getLocation} />
 				<label hidden={response}>Enable Location?</label>
 			</div>
-			<div className='data__divider'></div>
 			<div className='form'>
 				<form onSubmit={handleSubmit} hidden={response}>
 					<label className='form__label'>
@@ -126,7 +127,9 @@ export default function Form() {
 						</p>
 					</div>
 
-					<button type='submit'>Submit</button>
+					<button type='submit' className='form__button'>
+						Submit
+					</button>
 				</form>
 			</div>
 			{response && <FormResponse response={response} />}

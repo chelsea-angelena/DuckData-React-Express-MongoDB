@@ -7,6 +7,9 @@
     @include titleFont;
     text-align: center;
   }
+  &__item{
+    text-align: left;
+  }
 }
 .data__component{
   max-width: 300px;
@@ -18,6 +21,7 @@
 .bold{
   font-weight: bold;
   padding-right: 16px;
+  text-align: left;
 }
 .data__divider{
   width: 100%;
@@ -28,16 +32,8 @@
   max-width: 200px;
   height: 40px;
 }
-.checkbox {
-width: 250px;
-  display: flex;
-  flex-direction: row;
 
-  align-items: center;
-margin:0;
-padding:0;
-justify-content: center;
-}
+
 @media (min-width: 768px){
 .data{
   max-width: 100%;

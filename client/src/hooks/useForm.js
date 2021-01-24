@@ -29,7 +29,7 @@ export default function useForm() {
 
 	const submitForm = async (data) => {
 		try {
-			let res = await axios.post('http://localhost:5000/duckRoute', {
+			let res = await axios.post('/duckRoute', {
 				data,
 				coords: { latitude, longitude },
 			});

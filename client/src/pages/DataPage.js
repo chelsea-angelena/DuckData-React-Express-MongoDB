@@ -12,8 +12,8 @@ export default function DataPage() {
 			<h3 className='data__title'>Duck Data</h3>
 			{ducks &&
 				ducks.map((item, i) => (
-					<div className='data__component'>
-						<DuckList item={item} key={item._id} />
+					<div className='data__component' key={item._id}>
+						<DuckList item={item} />
 					</div>
 				))}
 		</div>
