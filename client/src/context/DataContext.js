@@ -21,8 +21,11 @@ const dataReducer = (state, action) => {
 const getData = (dispatch) => {
 	return async () => {
 		try {
-			let res = await axios.get('/duckRoute');
-			dispatch({ type: 'get_data', payload: res.data.result });
+			const response = await axios.get('/duckRoute');
+			dispatch({
+				type: 'get_data',
+				payload: { data: response.data.result },
+			});
 		} catch (e) {
 			console.log(e);
 		}
@@ -56,7 +59,7 @@ const addData = (dispatch) => {
 
 const editData = (dispatch) => {
 	return async (id, data) => {
-		await axios.put('/duckRoute/', { id, data });
+		await axios.put('/duckRoute', { id, data });
 		dispatch({ type: 'edit_data', payload: id, data });
 	};
 };
