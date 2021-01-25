@@ -19,7 +19,7 @@ export default function Form() {
 						required
 						type='text'
 					/>
-				</label>
+				</label> 
 				<label>
 					Type of Food:
 					<select

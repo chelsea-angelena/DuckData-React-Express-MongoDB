@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState, useContext } from 'react';
 import { DuckList } from '../components';
-import { Context as DataContext } from '../context/DataContext';
 import axios from 'axios';
 
 export default function DataPage() {
@@ -10,7 +9,6 @@ export default function DataPage() {
 	useEffect(() => {
 		const apiCall = async () => {
 			let res = await axios.get('/duckRoute');
-			console.log(res);
 			setData(res.data.result);
 		};
 		apiCall();
