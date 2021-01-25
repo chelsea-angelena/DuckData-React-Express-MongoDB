@@ -1,5 +1,5 @@
 # Duck Data
-# Data Collection App To Track where, how much, when and what ducks are being fed.
+Data Collection App To Track where, how much, when and what ducks are being fed.
 
 Deployed Project: https://duckdataapp.herokuapp.com/
 
