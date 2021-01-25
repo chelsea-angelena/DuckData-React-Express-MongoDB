@@ -1,25 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { DuckList } from '../components';
 import { Context as DataContext } from '../context/DataContext';
+import axios from 'axios';
 
 export default function DataPage() {
-	const { state, getData } = useContext(DataContext);
+	const [data, setData] = useState([]);
 
 	useEffect(() => {
-		getData();
-		const listener = window.addEventListener('focus', (event) => {
-			getData();
-		});
-		return () => {
-			window.removeEventListener('focus', listener);
+		const apiCall = async () => {
+			let res = await axios.get('/duckRoute');
+			console.log(res);
+			setData(res.data.result);
 		};
+		apiCall();
 	}, []);
 
 	return (
 		<>
 			<h3 className='data__title'>Duck Data</h3>
-			<div className='data'>{state && <DataList data={state} />}</div>
+			<div className='data'>{data && <DataList data={data} />}</div>
 		</>
 	);
 }
