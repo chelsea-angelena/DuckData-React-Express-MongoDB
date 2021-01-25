@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Context as DataContext } from '../context/DataContext';
-import { DuckList } from '../components';
+import { DuckList, Layout } from '../components';
 
 export default function EditData() {
 	const { state, deleteData } = useContext(DataContext);
@@ -9,7 +9,9 @@ export default function EditData() {
 	if (!submitMessage) {
 		return (
 			<>
-				<Link to='/form'> Click to return to the form </Link>
+				<Link to='/form' style={{ color: 'ochre' }}>
+					Click to return to the form
+				</Link>
 			</>
 		);
 	}
@@ -26,19 +28,22 @@ export default function EditData() {
 const Item = ({ dataItem, deleteData }) => {
 	let { submitMessage, data } = dataItem;
 	let { _id } = data;
+	let history = useHistory();
 	return (
 		<div className='edit'>
-			<div className='edit__message'>{submitMessage}</div>
-			<DuckList item={data} />
-			<p>Errors? Delete and resubmit your data.</p>
-			<button
-				onClick={() => {
-					deleteData(_id);
-					window.location.reload();
-				}}
-			>
-				Delete Item
-			</button>
+			<Layout>
+				<div className='edit__message'>{submitMessage}</div>
+				<DuckList item={data} />
+				<p>Errors? Delete and resubmit your data.</p>
+				<button
+					onClick={() => {
+						deleteData(_id);
+						history.push('/form');
+					}}
+				>
+					Delete Item
+				</button>
+			</Layout>
 		</div>
 	);
 };

@@ -1,7 +1,7 @@
 {
 	"name": "duck_data",
 	"version": "1.0.0",
-	"description": "FreshWorks Studio challenge app",
+	"description": "duck data collection app",
 	"main": "server.js",
 	"engines": {
 		"node": "14.x",
@@ -14,12 +14,12 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/chelsea-angelena/freshWorks.git"
+		"url": "git+https://github.com/chelsea-angelena/DuckData-React-Express-MongoDB/.git"
 	},
 	"author": "Chelsea Angelena Brown",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/chelsea-angelena/freshWorks/issues"
+		"url": "https://github.com/chelsea-angelena/DuckData-React-Express-MongoDB/issues"
 	},
 	"homepage": ".",
 	"dependencies": {

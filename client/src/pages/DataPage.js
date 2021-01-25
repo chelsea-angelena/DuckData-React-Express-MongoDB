@@ -11,7 +11,6 @@ export default function DataPage() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	
 	const { data } = state;
 	console.log(data);
 	if (!state || state.length < 1) {
