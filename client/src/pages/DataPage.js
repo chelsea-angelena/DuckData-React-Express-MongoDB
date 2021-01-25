@@ -8,7 +8,7 @@ export default function DataPage() {
 
 	useEffect(() => {
 		getData();
-	}, [getData]);
+	}, []);
 
 	return (
 		<>

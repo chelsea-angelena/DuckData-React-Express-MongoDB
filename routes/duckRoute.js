@@ -65,7 +65,7 @@ module.exports = (app) => {
 		}
 	});
 	app.get('/duckRoute', async (req, res, next) => {
-		await duckData.find({}, function (err, result) {
+		await DuckData.find({}, function (err, result) {
 			if (err) {
 				status(500).json('server error');
 			} else {
@@ -88,7 +88,7 @@ module.exports = (app) => {
 	app.get('/duckRoute/:id', async (req, res) => {
 		console.log(req.params);
 		let { id } = req.params;
-		await duckData.findById({ _id: id }, function (err, result) {
+		await DuckData.findById({ _id: id }, function (err, result) {
 			if (err) {
 				status(500).json('serevr error');
 			} else {
