@@ -9,8 +9,7 @@ export default function EditData() {
 	if (!submitMessage) {
 		return (
 			<>
-				<div> Thank you for your submission!</div>
-				<Link to='/data'> Click to see Data </Link>
+				<Link to='/form'> Click to return to the form </Link>
 			</>
 		);
 	}
@@ -31,12 +30,15 @@ const Item = ({ dataItem, deleteData }) => {
 		<div className='edit'>
 			<div className='edit__message'>{submitMessage}</div>
 			<DuckList item={data} />
-			<Link to='/data'>
-				<button onClick={() => {}}>Go To Data Page</button>
-			</Link>
-			<Link to='/data'>
-				<button onClick={() => deleteData(_id)}>Delete Item</button>
-			</Link>
+			<p>Errors? Delete and resubmit your data.</p>
+			<button
+				onClick={() => {
+					deleteData(_id);
+					window.location.reload();
+				}}
+			>
+				Delete Item
+			</button>
 		</div>
 	);
 };
