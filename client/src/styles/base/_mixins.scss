@@ -12,13 +12,24 @@
   @mixin titleFont{
     font-family: $font-main;
     padding-top: 1rem;
-    // margin-top: 32px;
-    // height: 32px;
     padding-bottom: 1.5rem;
     font-size: 2rem;
   }
   @mixin label-font{
     font-family: $font-main;
     font-weight: bold;
-    font-size: 1rem
+    font-size: 1rem;
+    text-align: left;
+}
+@mixin body-font{
+  font-family: $font-main;
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: left;
+}
+@mixin body-font-center{
+  font-family: $font-main;
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: center;
 }

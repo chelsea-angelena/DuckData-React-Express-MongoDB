@@ -1,7 +1,7 @@
 *{
   box-sizing: border-box;
-  width: 100%;
-  font-size: 16px;
+  max-width: 100%;
+  font-size: 14px;
   margin:0;
   padding:0;
 }
@@ -14,7 +14,7 @@
   margin:0 auto;
   padding:0;
   font-family: $font-main;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 a {
@@ -27,4 +27,24 @@ img{
 }
 ul{
   list-style: none;
+}
+.layout{
+  max-width: 100%;
+  margin: 0 auto;
+   @include center($flex-direction: column);
+   padding: 1.5rem;
+   text-align: center;
+   font-size: 1rem;
+ }
+
+@media (min-width: 768px){
+*, :root{font-size: 16px;}
+.layout{
+   padding: 1.5rem;
+   font-size: 1.5rem;
+ }
+}
+
+@media (min-width: 1024px){
+  *, :root{font-size: 18px;}
 }

@@ -1,74 +1,68 @@
-.form{
-  @include center($flex-direction: column);
-  justify-content: space-evenly;
-  padding-bottom: 32px;
-  max-width: 200px;
-  text-align: left;
-&__label{
+label{
   display: inline-block;
-  padding-top: 24px;
-  @include label-font;
+ padding-top: 1.5rem;
+@include label-font;
 }
-&__input{
-  width: 225px;
+input, select {
+  width: 14.0625rem;
   height: 40px;
-  margin-top: 12px;
+  margin-top: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
   align-self: center;
-padding-left: 24px;
-padding-right: 24px;
-border-radius: 8px;
+padding-left: 1.5rem;
+padding-right: 1.5rem;
+border-radius: 0.5rem;
 background-color: $lighter;
 }
-&__button{
-  height: 40px;
-  margin-top: 32px;
-  border-radius: 8px;
+button{
+  height: 2.5rem;
+  margin-top: 2rem;
+  border-radius: 0.5rem;
   background-color: $primary;
-  width: 200px;
+  width: 12.5rem;
 }
-&__button:hover{
+button:hover{
   background-color: $medium;
 }
-&__checkbox {
-  width: 250px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin:0;
-  margin-top:24px;
-align-self: center;
-  justify-content: center;
+form{
+  @include center($flex-direction: column);
+  justify-content: space-evenly;
+  padding-bottom: 2rem;
+  max-width: 12.5rem;
+  text-align: left;
+}
+.edit{
+  @include center($flex-direction: column);
+&__message{
+  padding: 24px;
+  @include body-font;
+}
+}
 
-  }
-}
-.response{
-  max-width: 300px;
-  text-align: center;
-  &__subtitle{
-    @include label-font
-  }
-  &__par{
-    padding: 24px;
-    text-align: left;
-  }
-  &__div{
-    text-align: left;
-  }
-}
+
+// .response{
+//   max-width: 18.75rem;
+//   text-align: center;
+//   &__subtitle{
+//     @include label-font
+//   }
+//   &__par{
+//     padding: 1.5rem;
+//     text-align: left;
+//   }
+//   &__div{
+//     text-align: left;
+//   }
+// }
 @media (min-width: 768px) {
-  .form{
-    @include center($flex-direction: row);
-    width: 600px;
-}
-.form__label{
+label{
   display: inline-block;
-  width: 200px;
+  width: 12.5rem;
 }
-.input{
+input{
   display: inline-block;
-  width: 200px;
+  width: 12.5rem;
 }
 }

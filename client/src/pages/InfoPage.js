@@ -12,23 +12,24 @@ export default function InfoPage() {
 			badItemFour,
 			badItemFive,
 			badItemSix,
-			badItemEight
+			badItemEight,
 		},
 	} = duckInfo;
 	return (
 		<Layout>
 			<h3 className='info__title'>{infoTitle}</h3>
-			<h6 className='info__subtitle'>Good Food For Ducks:</h6>
 			<div className='info__divider'></div>
+			<h6 className='info__subtitle'>Good Food For Ducks:</h6>
+
 			<ul className='info__list'>
 				<li className='info__item'>{itemOne}</li>
 				<li className='info__item'>{itemTwo}</li>
 				<li className='info__item'>{itemThree}</li>
 				<li className='info__item'>{itemFour}</li>
 			</ul>
-
-			<h6 className='info__subtitle'>Prohibited Foods:</h6>
 			<div className='info__divider'></div>
+			<h6 className='info__subtitle'>Prohibited Foods:</h6>
+
 			<ul className='info__list'>
 				<li className='info__item'>{badItemOne}</li>
 				<li className='info__item'>{badItemTwo}</li>

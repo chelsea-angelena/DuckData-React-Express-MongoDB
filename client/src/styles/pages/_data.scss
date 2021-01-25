@@ -1,36 +1,37 @@
 .data{
-  margin: 24px;
+  margin: 1.5rem;
   text-align: left;
   font-family: $font-main;
   font-size: 1rem;
   &__title{
     @include titleFont;
     text-align: center;
+    align-self: center;
   }
   &__item{
-    text-align: left;
+    @include body-font;
   }
 }
 .data__component{
-  max-width: 300px;
-  padding-top: 32px;
+  max-width: 18.75rem;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   flex-wrap: no-wrap;
 }
 .bold{
   font-weight: bold;
-  padding-right: 16px;
+  padding-right: 1rem;
   text-align: left;
 }
 .data__divider{
   width: 100%;
-  border-bottom: 1px solid $dark;
-  padding-top: 32px;
+  border-bottom: 0.0625rem solid $dark;
+  padding-top: 2rem;
 }
 .location__button{
-  max-width: 200px;
-  height: 40px;
+  max-width: 12.5rem;
+  height: 2.5rem;
 }
 
 
@@ -42,31 +43,14 @@
   margin: 0 auto;
 }
 .data__component{
-  padding-top: 32px;
+  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   flex-wrap: no-wrap;
 }
 .data__divider{
   width: 100%;
-  border-bottom: 1px solid $dark;
+  border-bottom: 0.0625rem solid $dark;
 
 }
 }
-//   div.data{
-// width: 700px;
-// display: flex;
-// margin: 0;
-// padding: 0;
-// flex-direction: row;
-// align-self: center;
-// flex-wrap: wrap;
-//     &__item{
-// max-width: 200px
-//     }
-//   }
-//     .data__divider{
-//       display: none;
-//     }
-
-// }

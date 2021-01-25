@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function DuckList({ item }) {
+
 	const {
 		coords: { latitude, longitude },
 		qtyFoodNumber,
@@ -11,6 +12,7 @@ export default function DuckList({ item }) {
 		time,
 		numOfDucks,
 	} = item;
+
 	let newDate = time
 		.toString()
 		.split('T')
@@ -25,7 +27,8 @@ export default function DuckList({ item }) {
 		.split(':')
 		.splice(0, 2)
 		.join(':');
-	return (
+
+		return (
 		<div className='data'>
 			<p className='data__item'>
 				<span className='bold'>Food:</span>

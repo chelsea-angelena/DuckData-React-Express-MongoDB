@@ -1,23 +1,15 @@
-import { useState } from 'react';
-import axios from 'axios';
+import { useState, useContext } from 'react';
+import { Context as DataContext } from '../context/DataContext';
+import { useHistory } from 'react-router-dom';
+
+import useLocation from './useLocation';
 
 export default function useForm() {
 	const [data, setData] = useState({});
-	const [latitude, setLatitude] = useState(0);
-	const [longitude, setLongitude] = useState(0);
-	const [error, setError] = useState(null);
-	const [response, setResponse] = useState(null);
+	const { latitude, longitude } = useLocation();
+	const { state, addData } = useContext(DataContext);
 
-	const getLocation = () => {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function (position) {
-				setLatitude(position.coords.latitude);
-				setLongitude(position.coords.longitude);
-			});
-		} else {
-			return;
-		}
-	};
+	const history = useHistory();
 
 	const handleChange = (e) => {
 		e.persist();
@@ -27,37 +19,27 @@ export default function useForm() {
 		}));
 	};
 
-	const submitForm = async (data) => {
-		try {
-			let res = await axios.post('/duckRoute', {
-				data,
-				coords: { latitude, longitude },
-			});
-			setResponse(res);
-		} catch (err) {
-			setError(err);
-		}
+	let navigate = async (state) => {
+		await history.push({ pathname: `/edit`, state });
 	};
 
 	const handleSubmit = (e) => {
+		let coords = { latitude, longitude };
 		if (e) {
 			e.preventDefault();
-			submitForm({ data });
-			e.target.reset();
+			addData({ data, coords });
 		} else {
 			return;
 		}
+		navigate(state);
 	};
 
 	return {
 		handleSubmit,
 		handleChange,
 		data,
-		submitForm,
 		latitude,
 		longitude,
-		getLocation,
-		error,
-		response,
+		state,
 	};
 }

@@ -1,21 +1,26 @@
-import React from 'react';
-import useDuckData from '../hooks/useDuckData';
+import React, { useEffect, useContext } from 'react';
+
 import { DuckList } from '../components';
+import { Context as DataContext } from '../context/DataContext';
 
 export default function DataPage() {
-	const [ducks, loading] = useDuckData();
-	if (loading) {
-		return <div>Loading...</div>;
-	}
+	const { state, getData } = useContext(DataContext);
+
+	useEffect(() => {
+		getData();
+	}, [getData]);
+
 	return (
-		<div className='data'>
+		<>
 			<h3 className='data__title'>Duck Data</h3>
-			{ducks &&
-				ducks.map((item, i) => (
-					<div className='data__component' key={item._id}>
-						<DuckList item={item} />
-					</div>
-				))}
-		</div>
+			<div className='data'>
+				{state &&
+					state.map((item, i) => (
+						<div className='data__component' key={item._id}>
+							<DuckList item={item} />
+						</div>
+					))}
+			</div>
+		</>
 	);
 }

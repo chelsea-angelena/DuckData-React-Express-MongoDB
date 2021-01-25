@@ -17,19 +17,23 @@
 .nav__link{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  padding: 12px 0px;
+  justify-content: space-between;
+  padding: 0.75rem 0px;
 }
-@media screen and (min-width: 524px){
+
+@media (min-width: 524px){
   .nav{
     display: flex;
     flex-direction: row;
+    justify-content:center;
     width: 100%;
   &__list{
     display: flex;
+    width: 300px;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 }
 }
+
