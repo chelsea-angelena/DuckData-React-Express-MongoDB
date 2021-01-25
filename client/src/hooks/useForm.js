@@ -7,7 +7,7 @@ import useLocation from './useLocation';
 export default function useForm() {
 	const [data, setData] = useState({});
 	const { latitude, longitude } = useLocation();
-	const { state, addData } = useContext(DataContext);
+	const { addData } = useContext(DataContext);
 
 	const history = useHistory();
 
@@ -19,8 +19,8 @@ export default function useForm() {
 		}));
 	};
 
-	let navigate = async (state) => {
-		await history.push({ pathname: `/edit`, state });
+	let navigate = async () => {
+		await history.push({ pathname: `/edit` });
 	};
 
 	const handleSubmit = (e) => {
@@ -31,7 +31,7 @@ export default function useForm() {
 		} else {
 			return;
 		}
-		navigate(state);
+		navigate();
 	};
 
 	return {
@@ -40,6 +40,5 @@ export default function useForm() {
 		data,
 		latitude,
 		longitude,
-		state,
 	};
 }

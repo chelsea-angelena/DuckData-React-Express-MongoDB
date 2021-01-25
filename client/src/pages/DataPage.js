@@ -1,5 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useContext } from 'react';
-
 import { DuckList } from '../components';
 import { Context as DataContext } from '../context/DataContext';
 
@@ -8,38 +8,37 @@ export default function DataPage() {
 
 	useEffect(() => {
 		getData();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		const listener = window.addEventListener('focus', (event) => {
+			getData();
+		});
+		return () => {
+			window.removeEventListener('focus', listener);
+		};
 	}, []);
 
-	const { data } = state;
-	console.log(data);
-	if (!state || state.length < 1) {
-		return (
-			<>
-				<div>Loading Data...</div>
-				No data? Try clicking refresh here:
-				<button onClick={() => window.location.reload()}>Refresh Data</button>
-			</>
-		);
-	}
 	return (
 		<>
 			<h3 className='data__title'>Duck Data</h3>
-			<div className='data'>{data ? <DataList data={data} /> : null}</div>
+			<div className='data'>{state && <DataList data={state} />}</div>
 		</>
 	);
 }
 
 const DataList = ({ data }) => {
-	console.log(data);
 	return (
 		<div>
-			{data &&
+			{data ? (
 				data.map((item, i) => (
 					<div className='data__component' key={item._id}>
 						<DuckList item={item} />
 					</div>
-				))}
+				))
+			) : (
+				<>
+					<p>No Data?</p>
+					<button> Click To Refresh </button>
+				</>
+			)}
 		</div>
 	);
 };

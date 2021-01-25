@@ -6,7 +6,7 @@ const dataReducer = (state, action) => {
 		case 'get_data_id':
 			return action.payload.data;
 		case 'get_data':
-			return action.payload;
+			return action.payload.data;
 		case 'add_data':
 			return action.payload;
 		case 'edit_data':
@@ -47,12 +47,15 @@ const getDataById = (dispatch) => {
 };
 
 const addData = (dispatch) => {
-	return async (data, coords) => {
+	return async (data, coords, callback) => {
 		try {
 			let res = await axios.post('/duckRoute', { data, coords });
 			dispatch({ type: 'add_data', payload: res.data });
 		} catch (e) {
 			console.log(e);
+		}
+		if (callback) {
+			callback();
 		}
 	};
 };
