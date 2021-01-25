@@ -8,6 +8,7 @@ export default function DataPage() {
 
 	useEffect(() => {
 		getData();
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

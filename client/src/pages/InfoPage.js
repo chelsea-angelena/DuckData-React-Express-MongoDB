@@ -4,7 +4,16 @@ import { duckInfo, Layout } from '../components';
 export default function InfoPage() {
 	const {
 		infoTitle,
-		infoTwo: { itemOne, itemTwo, itemThree, itemFour },
+		infoTwo: {
+			itemOne,
+			itemTwo,
+			itemThree,
+			itemFour,
+			itemFive,
+			itemSix,
+			itemSeven,
+			itemEight,
+		},
 		badFood: {
 			badItemOne,
 			badItemTwo,
@@ -26,6 +35,10 @@ export default function InfoPage() {
 				<li className='info__item'>{itemTwo}</li>
 				<li className='info__item'>{itemThree}</li>
 				<li className='info__item'>{itemFour}</li>
+				<li className='info__item'>{itemFive}</li>
+				<li className='info__item'>{itemSix}</li>
+				<li className='info__item'>{itemSeven}</li>
+				<li className='info__item'>{itemEight}</li>
 			</ul>
 			<div className='info__divider'></div>
 			<h6 className='info__subtitle'>Prohibited Foods:</h6>

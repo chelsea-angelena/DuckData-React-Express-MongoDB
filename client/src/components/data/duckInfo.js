@@ -4,7 +4,7 @@ const duckInfo = {
 	infoTitle: 'Duck Feeding Guide',
 	infoOne: 'Duck Safe Options:',
 	infoTwo: {
-		itemOne: 'Grapes. Cut in half to prevent choking!',
+		itemOne: 'Grapes cut in half.',
 		itemTwo: 'Cooked rice',
 		itemThree: 'chopped lettuce or green beans',
 		itemFour: 'Cracked corn',

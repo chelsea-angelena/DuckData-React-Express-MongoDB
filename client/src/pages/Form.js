@@ -89,13 +89,13 @@ export default function Form() {
 				<label>
 					Latitude:
 					{latitude && (
-						<input readonly='true' defaultValue={latitude} name='latitude' />
+						<input readOnly={true} defaultValue={latitude} name='latitude' />
 					)}
 				</label>
 				<label>
 					Latitude:
 					{longitude && (
-						<input readonly='true' defaultValue={longitude} name='longitude' />
+						<input readOnly={true} defaultValue={longitude} name='longitude' />
 					)}
 				</label>
 

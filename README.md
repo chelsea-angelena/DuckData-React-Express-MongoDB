@@ -59,13 +59,13 @@ If you are not deploying throgh heroku you can delete these scripts.
 
 Setting up Heroku Env Vars:
 
-Your project will not work unless you configure the same environment variables in your heroku app as you have set up in your .env file. You can do this either from the heroku project dashboard, or using the heroku CLI. The variables you need to configure are:
+The project will not deploy unless you configure the same environment variables in your heroku app as you have set up in your .env file. You can do this either from the heroku project dashboard, or, using the heroku CLI. The variables you need to configure are:
 
 MONGO_DB_PASS: <enter the password of your dbUser>
 MONGO_DB_USER: <enter the mongoDB username>
 MONGO_DB_DATABASE: <enter the database name>
 
-These should be different than the ones you have set in development, as you do not want to use the same database in dev as you do in production.
+**note: these have the same names as the dev environment variables, but they should have different values so that you are not using the same database for both production and dev environments
 ## Features
 
 CRUD operations: Get, Post, Delete endpoints are configured with the Express/Node.js server.
@@ -76,13 +76,16 @@ Form input and data collection
 
 MongoDB database
 
+React Context API
+
+React Hooks
 ## Contributing
 
 If you'd like to contribute, please fork the repository and make a new
 branch. Pull requests are warmly welcome.
 ## Links
 
-- Project homepage: "https://github.com/chelsea-angelena/DuckData-React-Express-MongoDB"
+- Project homepage: "https://duckdataapp.herokuapp.com"
 
 - Repository: "https://github.com/chelsea-angelena/DuckData-React-Express-MongoDB/.git"
 

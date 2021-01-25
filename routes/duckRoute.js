@@ -64,12 +64,12 @@ module.exports = (app) => {
 			console.log(e);
 		}
 	});
-	app.get('/duckRoute', async (req, res, next) => {
+	app.get('/duckRoute', async (req, res) => {
 		await DuckData.find({}, function (err, result) {
 			if (err) {
 				status(500).json('server error');
 			} else {
-				res.json({ result });
+				res.status(200).json({ result });
 			}
 		});
 	});
